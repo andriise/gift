@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>З нашою річницею ❤️</title>
+    <meta
+      name="description"
+      content="Особистий подарунок-сайт на нашу річницю."
+    />
+
+    <!-- Шрифти -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&family=Caveat:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- Стилі сайту -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Декоративний фоновий шар (хмаринки) -->
+    <div class="ambient-clouds" aria-hidden="true"></div>
+
+    <!-- Індикатор знайдених пасхалок -->
+    <div class="easter-egg-indicator" aria-live="polite">
+      <span aria-hidden="true">❤️</span>
+      <span><span id="easter-egg-count">0</span>/15</span>
+    </div>
+
+    <!-- ===================== HERO ===================== -->
+    <header class="hero" id="hero">
+      <div class="hero__bg" id="hero-bg"></div>
+      <div class="hero__overlay"></div>
+
+      <div class="hero__content">
+        <span class="hero__eyebrow">Наша історія</span>
+        <h1 class="hero__title">З нашою річницею</h1>
+        <p class="hero__subtitle">
+          Усе, що ми пройшли разом, — в одному місці.
+        </p>
+        <p class="hero__date" id="hero-start-date"></p>
+
+        <div class="countdown" aria-label="Лічильник часу разом">
+          <div class="countdown__unit">
+            <span class="countdown__number" id="countdown-days">0</span>
+            <span class="countdown__label">днів</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__number" id="countdown-hours">00</span>
+            <span class="countdown__label">годин</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__number" id="countdown-minutes">00</span>
+            <span class="countdown__label">хвилин</span>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="hero__scroll-hint"
+        aria-label="Гортати вниз до історії"
+      >
+        <span>Гортай далі</span>
+        <span></span>
+      </button>
+    </header>
+
+    <!-- ===================== ІСТОРІЯ (генерується з data.js) ===================== -->
+    <main id="story" class="story" aria-label="Наша історія за рік"></main>
+
+    <!-- ===================== ЛИСТ ДЛЯ ТЕБЕ ===================== -->
+    <section class="letter" id="letter" aria-label="Лист для тебе">
+      <div class="letter__card">
+        <h2 class="letter__title">Лист для тебе ❤️</h2>
+        <p class="letter__text" id="letter-typed"></p>
+        <p class="letter__signature">Назавжди твій, Андрій</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Зроблено з любов’ю — для тебе, і тільки для тебе.</p>
+    </footer>
+
+    <!-- ===================== МОДАЛЬНЕ ВІКНО ДЛЯ ФОТО ===================== -->
+    <dialog
+      id="photo-modal"
+      class="photo-modal"
+      aria-labelledby="photo-modal__title"
+    >
+      <div class="photo-modal__inner">
+        <button
+          type="button"
+          id="photo-modal__close"
+          class="photo-modal__close"
+          aria-label="Закрити"
+        >
+          ✕
+        </button>
+        <img id="photo-modal__image" class="photo-modal__image" src="" alt="" />
+        <h3 id="photo-modal__title" class="photo-modal__title"></h3>
+        <p id="photo-modal__description" class="photo-modal__description"></p>
+      </div>
+    </dialog>
+
+    <!-- ===================== ФІНАЛЬНА МОДАЛКА: УСІ ПАСХАЛКИ ЗНАЙДЕНІ ===================== -->
+    <dialog
+      id="easter-egg-final-modal"
+      class="easter-egg-final-modal"
+      aria-labelledby="easter-egg-final-title"
+    >
+      <div class="easter-egg-final-modal__inner">
+        <button
+          type="button"
+          id="easter-egg-final-close"
+          class="photo-modal__close"
+          aria-label="Закрити"
+        >
+          ✕
+        </button>
+        <p class="easter-egg-final-modal__icon" aria-hidden="true">❤️</p>
+        <h3 id="easter-egg-final-title" class="easter-egg-final-modal__title">
+          Ти знайшла всі маленькі секрети ❤️
+        </h3>
+        <p class="easter-egg-final-modal__text">
+          15 з 15. Кожен маленький спогад тепер знову твій.
+        </p>
+      </div>
+    </dialog>
+
+    <!-- ===================== МУЗИКА ===================== -->
+    <audio id="song-audio" preload="none"></audio>
+    <button
+      type="button"
+      id="music-toggle"
+      class="music-toggle"
+      aria-pressed="false"
+    >
+      <span id="music-toggle__icon" aria-hidden="true">🎵</span>
+      <span>Наша пісня</span>
+    </button>
+
+    <!-- ===================== СКРИПТИ ===================== -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script src="js/data.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/easterEggs.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
